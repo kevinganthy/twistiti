@@ -2,6 +2,11 @@
   import Clock from './components/clock.svelte';
 </script>
 
+<svelte:head>
+	<meta name="description" content="A twistiti clock app for parents." />
+  <meta name="theme-color" content="#333">
+</svelte:head>
+
 <main>
   <div>
     <Clock />
@@ -33,5 +38,9 @@
     margin: 0 0 1rem;
     display: flex;
     gap: 3rem;
+  }
+
+  a {
+    color: white;
   }
 </style>

@@ -12,14 +12,14 @@
     mDegree = value * 6;
   });
   hour.subscribe((value) => {
-    hDegree = value * 30;
+    hDegree = value * 30 + $minute / 2;
   });
 </script>
 
 
 <div class="clock">
   <div class="dot"></div>
-  <div>
+  <div class="hands">
     <div class="hour-hand" style="transform: rotate({hDegree}deg)"></div>
     <div class="minute-hand" style="transform: rotate({mDegree}deg)"></div>
     <div class="second-hand" style="transform: rotate({sDegree}deg)"></div>
@@ -29,15 +29,17 @@
 
 <style>
   .clock {
-    background-image: url("/cadrant.png");
+    background-image: url("/cadrant.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     padding: 10px;
     width: 80vmin;
     height: 80vmin;
+    max-width: 540px;
+    max-height: 540px;
     border-radius: 50%;
-    border: 14px solid #333;
+    border: 14px solid #181818;
     position: relative;
     box-shadow: 0 2vw 4vw -1vw rgba(0,0,0,0.8);
   }
@@ -57,13 +59,20 @@
     box-shadow: 0 2px 4px -1px black;
   }
 
+  .hands {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
   .hour-hand {
     position: absolute;
     z-index: 5;
     width: 16px;
     height: 17vmin;
+    max-height: 125px;
     background: #333;
-    top: 24vmin;
+    bottom: 50%;
     left: 50%;
     margin-left: -8px;
     border-radius: 10px;
@@ -75,8 +84,9 @@
     z-index: 6;
     width: 16px;
     height: 30vmin;
+    max-height: 200px;
     background: #333;
-    top: 11vmin;
+    bottom: 50%;
     left: 50%;
     margin-left: -8px;
     border-radius: 10px;
@@ -88,8 +98,9 @@
     z-index: 7;
     width: 2px;
     height: 40vmin;
-    background: gold;
-    top: 1vmin;
+    max-height: 270px;
+    background: #0b5d8a;
+    bottom: 50%;
     left: 50%;
     margin-left: -1px;
     border-top-left-radius: 50%;
